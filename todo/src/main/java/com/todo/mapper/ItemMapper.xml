@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+              "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.todo.mapper.ItemMapper">
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+		INSERT Item (contents)
+		VALUES (#{contents})
+	</insert>
+	<select id="findAll" resultType="ItemDto">
+		SELECT * FROM Item
+	</select>
+	
+	<delete id="deleteOne">
+	DELETE FROM Item WHERE id =#{id};
+	alter table item AUTO_INCREMENT=1;
+	</delete>
+	
+	<delete id="deleteAll">
+		DELETE FROM item
+	</delete>
+	
+	<select id="size" resultType="int">
+		SELECT COUNT(*) FROM Item
+	</select>
+	
+	<select id="findOne" resultType="String">
+		SELECT contents FROM Item WHERE id = #{id}
+	</select>
+
+
+</mapper>
